@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (header) {
     const onScroll = () => {
-      if (window.pageYOffset > 60) {
+      if (window.pageYOffset > 50) {
         header.classList.add('header--scrolled');
       } else {
         header.classList.remove('header--scrolled');
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       e.preventDefault();
       const headerHeight = header ? header.offsetHeight : 0;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 24;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
       window.scrollTo({ top, behavior: 'smooth' });
     });
@@ -78,7 +78,44 @@ document.addEventListener('DOMContentLoaded', () => {
     staggerContainers.forEach(el => staggerObserver.observe(el));
   }
 
-  /* --- Lightbox for Testimonial Images --- */
+  /* --- Countdown Timer --- */
+  const timerDays = document.getElementById('timer-days');
+  const timerHours = document.getElementById('timer-hours');
+  const timerMins = document.getElementById('timer-mins');
+  const timerSecs = document.getElementById('timer-secs');
+
+  if (timerDays && timerHours && timerMins && timerSecs) {
+    // Target time: 6 days 23 hrs 59 mins from now
+    let targetTime = new Date().getTime() + (6 * 24 * 60 * 60 * 1000) + (23 * 60 * 60 * 1000) + (59 * 60 * 1000);
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const distance = targetTime - now;
+
+      if (distance < 0) {
+        timerDays.innerText = '00';
+        timerHours.innerText = '00';
+        timerMins.innerText = '00';
+        timerSecs.innerText = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      timerDays.innerText = days < 10 ? '0' + days : days;
+      timerHours.innerText = hours < 10 ? '0' + hours : hours;
+      timerMins.innerText = minutes < 10 ? '0' + minutes : minutes;
+      timerSecs.innerText = seconds < 10 ? '0' + seconds : seconds;
+    };
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  }
+
+  /* --- Lightbox for Testimonial Screenshots --- */
   const lightbox = document.getElementById('lightbox');
 
   if (lightbox) {
@@ -87,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openLightbox = (src, alt) => {
       lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
+      lightboxImg.alt = alt || 'Student Testimonial';
       lightbox.classList.add('lightbox--active');
       document.body.style.overflow = 'hidden';
     };
@@ -115,3 +152,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+/* --- Global Copy Account Number Helper --- */
+function copyAccountNumber() {
+  const accNum = document.getElementById('acc-num')?.innerText || '5601772067';
+  const btnText = document.getElementById('copy-btn-text');
+
+  navigator.clipboard.writeText(accNum).then(() => {
+    if (btnText) {
+      const originalText = btnText.innerText;
+      btnText.innerText = '✅ Copied!';
+      setTimeout(() => {
+        btnText.innerText = originalText;
+      }, 2500);
+    }
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+}
