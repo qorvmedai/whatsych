@@ -1452,6 +1452,25 @@ strong {
   margin-bottom: 1.5rem;
 }
 
+.contact-support-text {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.contact-support-text a {
+  color: var(--accent-light);
+  font-weight: 700;
+  transition: color var(--transition);
+}
+
+.contact-support-text a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 /* --- Footer --- */
 .footer {
   padding: 3rem 0;
@@ -1473,6 +1492,24 @@ strong {
   margin-bottom: 0;
 }
 
+.footer-contact {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: 0.625rem;
+  margin-bottom: 0.25rem;
+}
+
+.footer-contact a {
+  color: var(--accent-light);
+  font-weight: 700;
+  transition: color var(--transition);
+}
+
+.footer-contact a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .footer-credit {
   font-size: 0.8125rem;
   color: var(--text-muted);
@@ -1489,6 +1526,42 @@ strong {
 .footer-credit a:hover {
   color: var(--accent);
   text-decoration: underline;
+}
+
+/* Floating WhatsApp CTA */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 99;
+  background: linear-gradient(135deg, #25D366 0%, #1ead56 100%);
+  color: #05140b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.45);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(37, 211, 102, 0.6);
+  color: #000;
+}
+
+@media (max-width: 480px) {
+  .floating-whatsapp {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+  }
 }
 
 /* --- Lightbox --- */
