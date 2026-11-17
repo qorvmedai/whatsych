@@ -1509,20 +1509,21 @@ strong {
   text-decoration: underline;
 }
 
-/* Floating WhatsApp CTA */
-.floating-whatsapp {
+
+/* Floating Selar CTA */
+.floating-selar {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 99;
-  background: linear-gradient(135deg, #25D366 0%, #1ead56 100%);
-  color: #05140b;
+  background: linear-gradient(135deg, #6C3BFF 0%, #4920C9 100%);
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.45);
+  box-shadow: 0 8px 30px rgba(108, 59, 255, 0.45);
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.875rem;
@@ -1530,14 +1531,14 @@ strong {
   text-decoration: none;
 }
 
-.floating-whatsapp:hover {
+.floating-selar:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 36px rgba(37, 211, 102, 0.6);
-  color: #000;
+  box-shadow: 0 12px 36px rgba(108, 59, 255, 0.6);
+  color: #ffffff;
 }
 
 @media (max-width: 480px) {
-  .floating-whatsapp {
+  .floating-selar {
     bottom: 1rem;
     right: 1rem;
     padding: 0.625rem 1rem;
